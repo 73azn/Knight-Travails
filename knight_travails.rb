@@ -30,25 +30,15 @@ queue = Queue.new
 queue.push([from,[from]])
 # it will traverse until reach the desiered position
 until queue.empty?
+
     #take the current pos and the path that take to this pos
     cur,path = queue.pop()
-  
-  
     #return the path if it's on the pos
     return path if cur == to
 
     moves = knight_possible_moves(cur)
-    
     #queue every movment with the path
-    queue.push([moves[0] , path+[moves[0]]]) if moves[0]
-    queue.push([moves[1] , path+[moves[1]]]) if moves[1]
-    queue.push([moves[2] , path+[moves[2]]]) if moves[2]
-    queue.push([moves[3] , path+[moves[3]]]) if moves[3]
-    queue.push([moves[4] , path+[moves[4]]]) if moves[4]
-    queue.push([moves[5] , path+[moves[5]]]) if moves[5]
-    queue.push([moves[6] , path+[moves[6]]]) if moves[6]
-      
-  
+    moves.each {|n| queue.push([n,path+[n]]) if n }
 end
 
 
